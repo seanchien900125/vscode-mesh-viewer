@@ -3,8 +3,16 @@
   "displayName": "3D Mesh Viewer",
   "publisher": "local-build",
   "description": "View 3D mesh files (.mesh, .msh, .inp, .vtk, .stl) in VS Code",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seanchien900125/vscode-mesh-viewer.git"
+  },
+  "homepage": "https://github.com/seanchien900125/vscode-mesh-viewer",
+  "bugs": {
+    "url": "https://github.com/seanchien900125/vscode-mesh-viewer/issues"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
