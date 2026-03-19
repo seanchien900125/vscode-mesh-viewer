@@ -1,0 +1,10 @@
+src/**
+media/**
+test_mesh/**
+test/**
+.vscode/**
+tsconfig.json
+vitest.config.ts
+webpack.config.js
+.gitignore
+.github/**

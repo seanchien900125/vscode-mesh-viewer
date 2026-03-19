@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.vsix
+artifacts/
+coverage/
+test_mesh/
+.DS_Store
+Thumbs.db

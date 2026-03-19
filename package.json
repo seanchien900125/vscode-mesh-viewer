@@ -1,0 +1,98 @@
+{
+  "name": "vscode-mesh-viewer",
+  "displayName": "3D Mesh Viewer",
+  "publisher": "local-build",
+  "description": "View 3D mesh files (.mesh, .msh, .inp, .vtk, .stl) in VS Code",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Visualization"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "meshViewer.view",
+        "displayName": "3D Mesh Viewer",
+        "selector": [
+          { "filenamePattern": "*.mesh" },
+          { "filenamePattern": "*.msh" },
+          { "filenamePattern": "*.inp" },
+          { "filenamePattern": "*.vtk" },
+          { "filenamePattern": "*.stl" }
+        ],
+        "priority": "default"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "meshViewer",
+          "title": "3D Mesh Viewer",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "meshViewer": [
+        {
+          "id": "meshViewer.explorer",
+          "name": "Mesh Files"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "meshViewer.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "meshViewer.openFile",
+        "title": "Open Mesh File...",
+        "icon": "$(folder-opened)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "meshViewer.refresh",
+          "when": "view == meshViewer.explorer",
+          "group": "navigation"
+        },
+        {
+          "command": "meshViewer.openFile",
+          "when": "view == meshViewer.explorer",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "ci": "npm run test:unit && npm run validate:test-mesh && npm run build",
+    "package:vsix": "npm run build && vsce package --no-dependencies --allow-missing-repository",
+    "test:unit": "vitest run",
+    "watch": "webpack --mode development --watch",
+    "dev": "webpack --mode development",
+    "validate:test-mesh": "webpack --mode development && node ./dist/validateTestMeshes.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/three": "^0.170.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.6.2",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.4.0",
+    "vitest": "^3.2.4",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  }
+}

@@ -1,0 +1,15 @@
+// VS Code tasks for building
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$ts-webpack-watch"
+    }
+  ]
+}
